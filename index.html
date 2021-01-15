@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // Variables storing score for the game() function
+        let playerScore = 0;
+        let robotScore = 0;
+
+
+        //create an array with the three selections and random pick one and return it
+        function robotPlay() {
+            const random = ['rock', 'paper', 'scissor']
+            const chosenOne = random[Math.floor(Math.random() * random.length)]
+            return chosenOne
+        }
+
+        // function that takes in the playerSelection from prompt value and robotselection from random function (robotPlay())
+        function playRound(playerSelection, robotSelection) {
+
+            // take any input and make it lowercase
+            playerSelection = playerSelection.toLowerCase()
+            robotSelection = robotSelection.toLowerCase()
+
+            console.log('PLAYER1 throws:' + playerSelection + ' ROBOT throws:' + robotSelection);
+
+            // Start of the if's
+            if (playerSelection == 'rock' && robotSelection == 'scissor') {
+                console.log('PLAYER1 WINS');
+                playerScore++
+
+
+            } else if (playerSelection == 'scissor' && robotSelection == 'paper') {
+                console.log('PLAYER1 WINS');
+                playerScore++
+
+            } else if (playerSelection == 'paper' && robotSelection == 'rock') {
+                console.log('PLAYER1 WINS');
+                playerScore++
+
+            } else if (playerSelection == robotSelection) {
+                console.log('suit and TIE');
+            } else {
+                console.log('ROBOT WINS');
+                robotScore++
+
+            }
+        }
+
+        // function for running the game X times
+        function game() {
+            for (let i = 1; i <= 5; i++) {
+                playRound(playerSelection, robotPlay())
+
+
+            }
+            if (playerScore > robotScore) {
+                console.log('PLAYER1 IS THE GRAND CHAMPION');
+            } else if (robotScore > playerScore) {
+                console.log('ROBOTS TAKIN\' OVER');
+            } else {
+                console.log('Justin Timberlake - Suit and TIE');
+            }
+            console.log(playerScore, robotScore);
+        }
+
+
+        const playerSelection = prompt('rock paper or scissor')
+        const robotSelection = robotPlay()
+        game()
+
+
+
+    </script>
+</body>
+
+</html>
